@@ -1,0 +1,75 @@
+<div 
+  class="product-gallery swiper" 
+  data-slides-desktop="{{ section.settings.slides_desktop }}"
+  data-slides-tablet="{{ section.settings.slides_tablet }}"
+  data-slides-mobile="{{ section.settings.slides_mobile }}"
+  data-pagination="{{ section.settings.show_pagination }}"
+  data-navigation="{{ section.settings.show_navigation }}"
+  data-space-between="{{ section.settings.space_between }}">
+
+  <div class="swiper-wrapper">
+    {% for media in product.media %}
+      {% if media.media_type == 'image' %}
+        <div class="swiper-slide" data-color="{{ media.alt | downcase }}">
+          <img src="{{ media.preview_image | img_url: '800x' }}" alt="{{ media.alt }}">
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <div class="swiper-pagination"></div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+</div>
+
+{% schema %}
+{
+  "name": "Swiper Gallery",
+  "settings": [
+    {
+      "type": "range",
+      "id": "slides_desktop",
+      "label": "Кількість слайдів (ПК)",
+      "min": 1,
+      "max": 5,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "slides_tablet",
+      "label": "Кількість слайдів (Планшет)",
+      "min": 1,
+      "max": 4,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "slides_mobile",
+      "label": "Кількість слайдів (Мобільний)",
+      "min": 1,
+      "max": 3,
+      "default": 1
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pagination",
+      "label": "Увімкнути пагінацію",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_navigation",
+      "label": "Увімкнути стрілки навігації",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "space_between",
+      "label": "Відступ між слайдами",
+      "min": 0,
+      "max": 50,
+      "default": 10
+    }
+  ]
+}
+{% endschema %}
