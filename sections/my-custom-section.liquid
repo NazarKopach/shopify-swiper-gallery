@@ -1,0 +1,288 @@
+<!-- sections/my-custom-section.liquid -->
+
+<div class="swiper product-gallery">
+  <div class="swiper-wrapper">
+    {% for media in product.media %}
+      <div class="swiper-slide" data-color="{{ media.alt | downcase | escape }}">
+        {{ media | media_tag }}
+      </div>
+    {% endfor %}
+  </div>
+
+  {% if section.settings.show_arrows %}
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  {% endif %}
+
+  {% if section.settings.show_pagination %}
+    <div class="swiper-pagination"></div>
+  {% endif %}
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+<section class="my-custom-section">
+  <div class="my-custom-section-wrapper">
+
+<!-- Slider main container -->
+<div class="swiper">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+    <div class="swiper-slide">Slide 1</div>
+    <div class="swiper-slide">Slide 2</div>
+    <div class="swiper-slide">Slide 3</div>
+    ...
+  </div>
+  <!-- If we need pagination -->
+  <div class="swiper-pagination"></div>
+
+  <!-- If we need navigation buttons -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+
+  <!-- If we need scrollbar -->
+  <div class="swiper-scrollbar"></div>
+</div>
+
+<div class="form-group">
+  <h2 class="title-h2">Mate lip kitt</h2>
+  <p>price</p>
+  <img width="50" height="50"/>
+  <img width="50" height="50"/>
+  <p>color:</p>
+  <p>size:</p>
+  <button>Add to cart</button>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, 
+    facilis nisi temporibus accusamus similique, eveniet dolores beatae 
+    voluptatum impedit ipsa dolorem sunt labore perspiciatis quod.</p>
+
+<div class="faq">
+  <div class="faq__row">
+    <input type="checkbox" id=index-1 class="faq__toggle">
+    <label for=index-1 class="faq__question">Size guide</label>
+    <div class="faq__answer">option1</div>
+  </div>
+</div>
+<div class="faq">
+  <div class="faq__row">
+    <input type="checkbox" id=index-2 class="faq__toggle">
+    <label for=index-2 class="faq__question">Model size</label>
+    <div class="faq__answer">option2</div>
+  </div>
+</div>
+<div class="faq">
+  <div class="faq__row">
+    <input type="checkbox" id=index-3 class="faq__toggle">
+    <label for=index-3 class="faq__question">Detaile</label>
+    <div class="faq__answer">option3</div>
+  </div>
+</div>
+<div class="faq">
+  <div class="faq__row">
+    <input type="checkbox" id=index-4 class="faq__toggle">
+    <label for=index-4 class="faq__question">Card guide</label>
+    <div class="faq__answer">option4</div>
+  </div>
+</div>
+
+  </form>
+  </div>
+</section>
+
+<style>
+
+  .faq {
+  overflow: hidden;
+  border:1px solid black;
+}
+
+.faq__question {
+  background-color: rgb(156, 186, 186);
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+  color: #000;
+  cursor: pointer;
+}
+
+.faq__question:hover {
+  background-color: #ccc;
+}
+
+.faq__question::after {
+  content: '\276F';
+  transition: all 0.5s;
+}
+
+.faq__toggle {
+  display: none;
+}
+
+.faq__toggle:checked ~ .faq__question::after {
+  transform: rotate(90deg);
+}
+
+.faq__answer {
+  background-color: burlywood;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.4s;
+  padding: 0 1em;
+}
+
+.faq__toggle:checked ~ .faq__answer {
+  max-height: 100vh;
+  padding: 1em;
+}
+
+
+  .my-custom-section-wrapper{
+    display:flex;
+  }
+
+p {
+  margin: 0;
+}
+
+  .title-h2{
+    margin: 0;
+  }
+  .custom-form {
+    margin-top: 20px;
+    background: #f7f7f7;
+    padding: 20px;
+    border-radius: 8px;
+  }
+
+  .form-group{
+    width: 500px;
+  }
+
+  .custom-form .form-group {
+    margin-bottom: 15px;
+  }
+
+  .custom-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  .custom-form button {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .dropdown-checkbox {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
+
+  .dropdown-checkbox-toggle {
+    padding: 10px;
+    background-color: #f7f7f7;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .dropdown-checkbox-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 10;
+    border-radius: 4px;
+    margin-top: 4px;
+  }
+
+  .dropdown-checkbox-content label {
+    display: block;
+    padding: 8px;
+    cursor: pointer;
+  }
+
+  .dropdown-checkbox.active .dropdown-checkbox-content {
+    display: block;
+  }
+
+  .swiper {
+  width: 1000px;
+  height: 300px;
+}
+</style>
+
+<script>
+const swiper = new Swiper('.swiper', {
+  // Optional parameters
+  direction: 'vertical',
+  loop: true,
+
+  // If we need pagination
+  pagination: {
+    el: '.swiper-pagination',
+  },
+
+  // Navigation arrows
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+
+  // And if we need scrollbar
+  scrollbar: {
+    el: '.swiper-scrollbar',
+  },
+});
+</script>
+
+
+{% schema %}
+{
+  "name": "My Custom Section",
+  "tag": "section",
+  "class": "my-custom-section",
+  "settings": [
+    {
+  "type": "number",
+  "id": "slides_pc",
+  "label": "Кількість слайдів на ПК",
+  "default": 3
+},
+{
+  "type": "number",
+  "id": "slides_tablet",
+  "label": "Кількість слайдів на планшеті",
+  "default": 2
+},
+{
+  "type": "number",
+  "id": "slides_mobile",
+  "label": "Кількість слайдів на мобільному",
+  "default": 1
+},
+{
+  "type": "number",
+  "id": "space_between",
+  "label": "Відступ між слайдами (px)",
+  "default": 10
+}
+
+  ],
+  "presets": [
+    {
+      "name": "My Custom Section"
+    }
+  ]
+}
+{% endschema %}
+

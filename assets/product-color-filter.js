@@ -1,21 +1,21 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener("DOMContentLoaded", function () {
   const colorSelect = document.querySelector('[name="options[Color]"]');
-  const slides = document.querySelectorAll('.swiper-slide');
+  const slides = document.querySelectorAll(".swiper-slide");
 
   if (!colorSelect) return;
 
-  colorSelect.addEventListener('change', function (e) {
+  colorSelect.addEventListener("change", function (e) {
     const selectedColor = e.target.value.toLowerCase();
 
-    slides.forEach(slide => {
+    slides.forEach((slide) => {
       if (slide.dataset.color === selectedColor) {
-        slide.style.display = 'block';
+        slide.style.display = "block";
       } else {
-        slide.style.display = 'none';
+        slide.style.display = "none";
       }
     });
 
-    const swiper = document.querySelector('.product-gallery').swiper;
+    const swiper = document.querySelector(".product-gallery").swiper;
     if (swiper) swiper.update();
   });
 });
